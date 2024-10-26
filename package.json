@@ -1,7 +1,7 @@
 {
   "name": "relational-app",
   "version": "1.0.0",
-  "description": "This is relational authenticated api for learning purposes.",
+  "description": "This is relational authenticated rest api for learning purposes.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,5 @@
   "dependencies": {
     "express": "^4.21.1",
     "sequelize": "^6.37.5"
-  },
-  "devDependencies": {
-    "sequelize-cli": "^6.6.2"
   }
 }
