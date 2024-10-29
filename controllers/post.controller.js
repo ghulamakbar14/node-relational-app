@@ -11,10 +11,16 @@ function index (reg, res) {
 function show(req, res) {
     const id = req.params.id;
     const post = models.Post.findByPk(id).then(result => {
-        res.status(200).json({
-            message: "Post found successfully",
-            post: result
-        })
+        if(result) {
+            res.status(200).json({
+                message: "Post found successfully",
+                post: result
+            });
+        } else {
+            res.status(404).json({
+                message: "Post not found"
+            });
+        }
     }).catch(error => {
         res.status(404).json({
             message: "Post not found",
@@ -34,10 +40,16 @@ function update(req, res) {
     };
 
     models.Post.update(updatePost, {where: {id:id, userId: userId} }).then(result => {
-        res.status(200).json({
-            message: "Post updated successfully",
-            post: updatePost
-        })
+        if(result) {
+            res.status(200).json({
+                message: "Post updated successfully",
+                post: updatePost
+            });
+        } else {
+            res.status(404).json({
+                message: "Post not found"
+            });
+        }
     }).catch(error => {
         res.status(500).json({
             message: "Something went wrong",
@@ -50,9 +62,15 @@ function destroy(req, res) {
     const id = req.params.id;
     const userId = 1;
     models.Post.destroy({where: {id:id, userId: userId} }).then(result => {
-        res.status(200).json({
-            message: "Post deleted successfully"
-        })
+        if (result) {
+            res.status(200).json({
+                message: "Post deleted successfully"
+            });
+        } else {
+            res.status(404).json({
+                message: "Post not found"
+            });
+        }
     }).catch(error => {
         res.status(500).json({
             message: "Something went wrong",
