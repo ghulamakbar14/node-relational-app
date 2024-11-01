@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const postRouter = require("./routes/post.route");
+
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {

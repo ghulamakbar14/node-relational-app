@@ -1,6 +1,6 @@
 const validator = require('fastest-validator');
 
-const models = require('../models');
+const models = require("../models");
 
 function index (reg, res) {
     models.Post.findAll().then(result => {
